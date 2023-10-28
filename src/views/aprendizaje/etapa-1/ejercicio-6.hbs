@@ -1,0 +1,462 @@
+<p id="texto_instrucciones" hidden>Por favor presione las letras en orden y repita luego de presionarlas. Al finalizar presione el botón verde.</p>
+<div class="cssanimation fadeInBottom">
+    <div class="text-center">
+        <div class="text-center">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <button class="btn btn-danger text-center " style="padding-right: 10%; color:black; "
+                            onclick="leerTexto()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z">
+                                </path>
+                                <path
+                                    d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z">
+                                </path>
+                                <path
+                                    d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z">
+                                </path>
+                            </svg>
+                        </button>
+                        <a href="/modulos/aprendizaje/etapa-1?next=ejercicio-7" class="btn btn-success"
+                            style="padding-right: 10%;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <hr>
+                <div class="row justify-content-center ">
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Aa')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">A</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">a</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Bb')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">B</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">b</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Cc')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">C</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">c</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Dd')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">D</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">d</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ee')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">E</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">e</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ff')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">F</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">f</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Gg')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">G</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">g</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Hh')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">H</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">h</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ii')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">I</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">i</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <hr>
+                <div class="row justify-content-center">
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Jj')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">J</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">j</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Kk')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">K</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">k</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ll')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">L</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">l</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Mm')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="50" fill="black">M</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="50" fill="black">m</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Nn')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">N</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">n</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ññ')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">Ñ</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">ñ</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Oo')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">O</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">o</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Pp')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">P</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">p</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Qq')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">Q</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">q</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <hr>
+                <div class="row justify-content-center">
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Rr')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">R</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">r</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ss')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">S</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">s</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Tt')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">T</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">t</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Uu')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="50" fill="black">U</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="50" fill="black">u</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Vv')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">V</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">v</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Ww')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">W</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">w</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Xx')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">X</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">x</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Yy')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">Y</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">y</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <button onclick="readLetter('Zz')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                        viewBox="0 0 100 100">
+                                        <!-- Letra "B" -->
+                                        <text x="10" y="60" font-family="Arial" font-size="60" fill="black">Z</text>
+                                        <!-- Letra "b" -->
+                                        <text x="60" y="60" font-family="Arial" font-size="60" fill="black">z</text>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function readLetter(letter){
+    var sonido = new Audio();
+    sonido.src = '/audio/letter/'+letter+'.m4a';
+    sonido.play()
+  }
+</script>

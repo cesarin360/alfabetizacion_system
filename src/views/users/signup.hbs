@@ -1,0 +1,29 @@
+<div class="cssanimation fadeInBottom">
+    <div class="col-md-4 mx-auto col-auto p-5 text-center m-5">
+        <div class="card text-center">
+            <div class="card-header">
+                <h3>Registro de Cuenta</h3>
+            </div>
+            <div class="card-body">
+                <form action="/users/signup" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Nombre Completo" value="{{name}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Correo Electrónico" value="{{email}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirm_password"
+                            placeholder="Confirmar Constraseña">
+                    </div>
+                    <button class="btn btn-primary btn-block">
+                        Signup
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

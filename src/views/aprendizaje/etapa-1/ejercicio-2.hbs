@@ -1,0 +1,82 @@
+<p id="texto_instrucciones" hidden>Presioné el botón de color blanco con una flecha para escuchar cada una de las vocales. Por favor repita e intente escribir en su cuaderno cada una. Al terminar presione el botón de color verde. </p>
+<div class="container mt-4 text-center">
+  <div class="cssanimation fadeInBottom">
+    <div class="text-center">
+      <img src="/img/letters/Aa.png" class="img-fluid" alt="..." id="vocalDisplay"
+        style="width: 100%; height: auto; max-width: 720px;">
+    </div>
+    <br><br>
+    <div class="row justify-content-center">
+      <br>
+      <div class="col-md-3">
+        <br>
+        <div class="block product  z-depth-2--hover" id="showVowels">
+          <button class="btn btn-secondary text-center intermitente" style="padding-right: 5%; color:black; ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+              class="bi bi-forward-fill" viewBox="0 0 16 16">
+              <path
+                d="m9.77 12.11 4.012-2.953a.647.647 0 0 0 0-1.114L9.771 5.09a.644.644 0 0 0-.971.557V6.65H2v3.9h6.8v1.003c0 .505.545.808.97.557z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-3">
+        <br>
+        <div class="block product z-depth-2--hover">
+          <button type="button" class="btn btn-danger" style="padding-right: 10%;" onclick="leerTexto()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+              class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+              <path
+                d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z">
+              </path>
+              <path
+                d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z">
+              </path>
+              <path
+                d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-3">
+        <br>
+        <div class="block product z-depth-2--hover">
+          <a href="/modulos/aprendizaje/etapa-1?next=ejercicio-3" type="button" class="btn btn-success"
+            style="padding-right: 5%; ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+              class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z">
+              </path>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const vowels = ["Aa", "Ee", "Ii", "Oo", "Uu"];
+  const vocalDisplay = document.getElementById("vocalDisplay");
+  const showVowelsButton = document.getElementById("showVowels");
+  let currentVowelIndex = 0;
+
+  showVowelsButton.addEventListener("click", showNextVowel);
+
+  function showNextVowel() {
+    if (currentVowelIndex < vowels.length) {
+      vocalDisplay.src = "/img/letters/" + vowels[currentVowelIndex] + ".png";
+      var sonido = new Audio();
+      sonido.src = '/audio/Vocales/'+vowels[currentVowelIndex]+'.m4a';
+      sonido.play()
+      currentVowelIndex++;
+    } else {
+      currentVowelIndex = 0;
+    }
+  }
+
+</script>

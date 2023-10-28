@@ -1,0 +1,158 @@
+<p id="texto_pista" hidden>El número es incorrecto, por favor vuelva a intentarlo. El número que debe escribir es el que indica la mano y el que esta arriba de esta.</p>
+<p id="texto_exito" hidden>Felicidades, ha completado el ejercicio. Por favor presione el botón verde para salir de la etapa.</p>
+<p id="texto_instrucciones" hidden>Se le presenta una serie de imágenes con un cuadro en la parte de abajo, por favor escriba en el cuadro que se ilumina el número de dedos de la mano.</p>
+
+<div class="container text-center">
+  <div class="cssanimation fadeInBottom">
+    <div class="container mt-4 justify-content-center">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <button class="btn btn-danger text-center " style="padding-right: 10%; color:black; "
+                            onclick="leerTexto()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z">
+                                </path>
+                                <path
+                                    d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z">
+                                </path>
+                                <path
+                                    d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z">
+                                </path>
+                            </svg>
+                        </button>
+                        <a href="/modulos/aprendizaje" class="btn btn-success"
+                            style="padding-right: 10%;" id="greenButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    <div class="row justify-content-center" style="padding-left: 5%;">
+      <div class="col-sm-auto" style="padding-top: 5%;">
+        <div class="card " style="width: 18rem;">
+          <img class="card-img-top" src="/img/1_dedo.png" alt="Card image cap">
+          <div class="card-body">
+            <input class="disabled" type="number" name="one" value="1" style="text-align: center; " pattern="[1-5]"
+              disabled>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-auto" style="padding-top: 5%;">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/img/2_dedo.png" alt="Card image cap">
+          <div class="card-body">
+            <input class="intermitente" type="number" id="two" style="text-align: center; " pattern="[1-5]">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-auto" style="padding-top: 5%;">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/img/3_dedo.png" alt="Card image cap">
+          <div class="card-body">
+            <input type="number" id="three" style="text-align: center; " pattern="[1-5]">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-auto" style="padding-top: 5%;">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/img/4_dedo.png" alt="Card image cap">
+          <div class="card-body">
+            <input type="number" id="four" style="text-align: center; " pattern="[1-5]">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-auto" style="padding-top: 5%;">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/img/5_dedo.png" alt="Card image cap">
+          <div class="card-body">
+            <input type="number" id="five" style="text-align: center; " pattern="[1-5]">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var textoPista = document.getElementById("texto_pista").textContent;
+  var textoExito = document.getElementById("texto_exito").textContent;
+  const txtInputTwo = document.getElementById('two');
+  const txtInputThree = document.getElementById('three');
+  const txtInputFour = document.getElementById('four');
+  const txtInputFive = document.getElementById('five');
+  const greenButton = document.getElementById("greenButton");
+
+  txtInputTwo.addEventListener('keyup', () => {
+    if (txtInputTwo.value == 2){
+      txtInputThree.className = "intermitente";
+      txtInputTwo.className = ""
+      txtInputThree.focus();
+    }else{
+      var synth = window.speechSynthesis;
+      var speech = new SpeechSynthesisUtterance(textoPista);
+      speech.onend = function (event) {
+        txtInputTwo.value = "";
+      };
+      synth.speak(speech);
+      
+    }
+  });
+
+  txtInputThree.addEventListener('keyup', () => {
+    if (txtInputThree.value == 3){
+      txtInputFour.className = "intermitente";
+      txtInputThree.className = ""
+      txtInputFour.focus();
+    }else{
+      var synth = window.speechSynthesis;
+      var speech = new SpeechSynthesisUtterance(textoPista);
+      speech.onend = function (event) {
+        txtInputThree.value = "";  
+      };
+      synth.speak(speech);
+    }
+  });
+
+  txtInputFour.addEventListener('keyup', () => {
+    if (txtInputFour.value == 4){
+      txtInputFive.className = "intermitente";
+      txtInputFour.className = ""
+      txtInputFive.focus();
+    }else{
+      var synth = window.speechSynthesis;
+      var speech = new SpeechSynthesisUtterance(textoPista);
+      speech.onend = function (event) {
+        txtInputFour.value = "";
+      };
+      synth.speak(speech);
+    }
+  });
+
+  txtInputFive.addEventListener('keyup', () => {
+    if (txtInputFive.value == 5){
+      var synth = window.speechSynthesis;
+      var speech = new SpeechSynthesisUtterance(textoExito);
+      speech.onend = function (event) {
+        txtInputFive.className = ""
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        greenButton.className += " intermitente";
+        txtInputFive.blur();
+      };
+      synth.speak(speech);
+    }else{
+      var synth = window.speechSynthesis;
+      var speech = new SpeechSynthesisUtterance(textoPista);
+      speech.onend = function (event) {
+        txtInputFive.value = "";
+         
+      };
+      synth.speak(speech);
+    }
+  });
+</script>

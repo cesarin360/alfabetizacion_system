@@ -1,0 +1,1205 @@
+<style>
+    h1 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+            "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+            "Noto Color Emoji";
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: 5vw;
+    }
+
+    h1,
+    .h1 {
+        font-size: calc(1.375rem + 1.5vw);
+    }
+
+    @media (min-width: 1200px) {
+
+        h1,
+        .h1 {
+            font-size: 5vw;
+        }
+    }
+
+    body {
+        background-color: rgb(11, 1, 29);
+    }
+
+    table {
+        width: 400px;
+        margin: auto;
+        background-color: cornflowerblue;
+        text-align: center;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: darkcyan;
+    }
+
+    .boton {
+        width: 40px;
+        box-shadow: inset 0px 1px 0px 0px #caefab;
+        background: linear-gradient(to bottom, #9d8af0 5%, #7715f7 100%);
+        background-color: #5716ac;
+        border-radius: 6px;
+        border: 2px solid #4d4c9c;
+        display: inline-block;
+        /*cursor:pointer;*/
+        color: #030424;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #aa99d3;
+    }
+
+    .boton:hover {
+        background: linear-gradient(to bottom, #afa8ee 5%, #9773e9 100%);
+        background-color: #5cb811;
+    }
+
+    .boton:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .boton_th {
+        width: 40px;
+        box-shadow: inset 0px 1px 0px 0px #caefab;
+        background: linear-gradient(to bottom, #65ad29 5%, #2c5a07 100%);
+        background-color: #77d42a;
+        border-radius: 6px;
+        border: 2px solid #268a16;
+        display: inline-block;
+        /*cursor:pointer;*/
+        color: #102003;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #91ca60;
+    }
+
+    .boton_th:hover {
+        background: linear-gradient(to bottom, #7dc542 5%, #3c7012 100%);
+        background-color: #5cb811;
+    }
+
+    .boton_th:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        border-radius: 5px;
+    }
+
+    /* Estilos para el overlay */
+    .btn-link {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Estilos para el overlay */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    /* Estilos para el popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        width: 90%;
+        /* Limita el ancho del popup para dispositivos pequeños */
+        max-width: 400px;
+        /* Establece un ancho máximo para evitar que el popup sea demasiado grande */
+    }
+
+    /* Estilos para el botón dentro del popup */
+    .popup button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+</style>
+<p id="texto_instrucciones" hidden>
+    Por favor presiona cada una de las letras o sílabas, escucha y repite. Por ultimo intenta copiarlas en tu cuaderno. 
+</p>
+<div class="container text-center">
+    <h2 class="page-section-heading text-center text-uppercase text-white">
+        Ejercicio de pronunciación de sílabas
+    </h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="row justify-content-center">
+        <br>
+        <div class="col-md-3">
+            <br>
+            <div class="block product  z-depth-2--hover" id="showVowels">
+                <button onclick="mostrarPopup()" class="btn btn-secondary text-center intermitente"
+                    style="padding-right: 5%; color:black; ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                        class="bi bi-book" viewBox="0 0 16 16">
+                        <path
+                            d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-3">
+            <br>
+            <div class="block product z-depth-2--hover">
+                <button type="button" class="btn btn-danger" style="padding-right: 10%;" onclick="leerTexto()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                        class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z">
+                        </path>
+                        <path
+                            d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z">
+                        </path>
+                        <path
+                            d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-3">
+            <br>
+            <div class="block product z-depth-2--hover">
+                <a href="/modulos/gamificacion" type="button" class="btn btn-success"
+                    style="padding-right: 5%; ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                        class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z">
+                        </path>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <p>
+            A continuación se presenta una tabla donde cada botón de color morado
+            es una sílaba utilizando la letra a la izquierda y vocales en primera
+            fila de la tabla. Los botones de color verde en la primera fila son
+            las vocales y la primera columna a la izquierda son las consonantes.
+            <br />
+            Se recomienda que el estudiante presione cada uno de los botones
+            siguiendo el orden de izquierda a derecha de arriba abajo. En cada
+            botón que el estudiante presione deberá repetir en voz alta y tratar
+            de copiar la letra o sílaba que observa en papel.
+        </p>
+        <button class="btn btn-link" onclick="cerrarPopup()">Cerrar</button>
+    </div>
+</div>
+<br />
+<table>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="letras.play()">···</a>
+        </th>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_A_.play()">a</a>
+        </th>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_E_.play()">e</a>
+        </th>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_I_.play()">i</a>
+        </th>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_O_.play()">o</a>
+        </th>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_U_.play()">u</a>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_BE.play()">b</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_BA.play()">ba</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_BE.play()">be</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_BI.play()">bi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_BO.play()">bo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_BU.play()">bu</a>
+        </td>
+    </tr>
+    <tr>
+        <th rowspan="2">
+            <a class="boton_th" href="##" onmousedown="sonido_CE.play()">c</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CA.play()">ca</a>
+        </td>
+        <td colspan="2"></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CO.play()">co</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CU.play()">cu</a>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CE.play()">ce</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CI.play()">ci</a>
+        </td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_CH.play()">ch</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CHA.play()">cha</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CHE.play()">che</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CHI.play()">chi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CHO.play()">cho</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_CHU.play()">chu</a>
+        </td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_DE.play()">d</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_DA.play()">da</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_DE.play()">de</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_DI.play()">di</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_DO.play()">do</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_DU.play()">du</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_F.play()">f</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_FA.play()">fa</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_FE.play()">fe</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_FI.play()">fi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_FO.play()">fo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_FU.play()">fu</a>
+        </td>
+    </tr>
+    <tr>
+        <th rowspan="3">
+            <a class="boton_th" href="##" onmousedown="sonido_GE.play()">g</a>
+        </th>
+        <td></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GE.play()">ge</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GI.play()">gi</a>
+        </td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GA.play()">ga</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GUE.play()">gue</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GUI.play()">gui</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GO.play()">go</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GU.play()">gu</a>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GÜE.play()">güe</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_GÜI.play()">güi</a>
+        </td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_H.play()">h</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_HA.play()">ha</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_HE.play()">he</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_HI.play()">hi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_HO.play()">ho</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_HU.play()">hu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_J.play()">j</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_JA.play()">ja</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_JE.play()">je</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_JI.play()">ji</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_JO.play()">jo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_JU.play()">ju</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_KA.play()">k</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_KA.play()">ka</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_KE.play()">ke</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_KI.play()">ki</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_KO.play()">ko</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_KU.play()">ku</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_L.play()">l</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LA.play()">la</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LE.play()">le</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LI.play()">li</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LO.play()">lo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LU.play()">lu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_LL.play()">ll</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LLA.play()">lla</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LLE.play()">lle</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LLI.play()">lli</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LLO.play()">llo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_LLU.play()">llu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_M.play()">m</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_MA.play()">ma</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ME.play()">me</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_MI.play()">mi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_MO.play()">mo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_MU.play()">mu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_N.play()">n</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_NA.play()">na</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_NE.play()">ne</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_NI.play()">ni</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_NO.play()">no</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_NU.play()">nu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_Ñ.play()">ñ</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ÑA.play()">ña</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ÑE.play()">ñe</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ÑI.play()">ñi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ÑO.play()">ño</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ÑU.play()">ñu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_PE.play()">p</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_PA.play()">pa</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_PE.play()">pe</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_PI.play()">pi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_PO.play()">po</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_PU.play()">pu</a>
+        </td>
+    </tr>
+    <tr>
+        <th rowspan="2">
+            <a class="boton_th" href="##" onmousedown="sonido_Q.play()">q</a>
+        </th>
+        <td></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_QUE.play()">que</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_QUI.play()">qui</a>
+        </td>
+        <td colspan="2"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_QUA.play()">qua</a>
+        </td>
+        <td colspan="2"></td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_QUO.play()">quo</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th rowspan="3">
+            <a class="boton_th" href="##" onmousedown="sonido_R.play()">r</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RA.play()">ra</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RE.play()">re</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RI.play()">ri</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RO.play()">ro</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RU.play()">ru</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido__RA.play()">_ra</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido__RE.play()">_re</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido__RI.play()">_ri</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido__RO.play()">_ro</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido__RU.play()">_ru</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RA.play()">_rra</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RE.play()">_rre</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RI.play()">_rri</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RO.play()">_rro</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_RU.play()">_rru</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_S.play()">s</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_SA.play()">sa</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_SE.play()">se</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_SI.play()">si</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_SO.play()">so</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_SU.play()">su</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_TE.play()">t</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_TA.play()">ta</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_TE.play()">te</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_TI.play()">ti</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_TO.play()">to</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_TU.play()">tu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_V.play()">v</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_VA.play()">va</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_VE.play()">ve</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_VI.play()">vi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_VO.play()">vo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_VU.play()">vu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_W.play()">w</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_WA.play()">wa</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_WE.play()">we</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_WI.play()">wi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_WO.play()">wo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_WU.play()">wu</a>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_X.play()">x</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_XA.play()">xa</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_XE.play()">xe</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_XI.play()">xi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_XO.play()">xo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_XU.play()">xu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_YE.play()">y</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_YA.play()">ya</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_YE.play()">ye</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_YI.play()">yi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_YO.play()">yo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_YU.play()">yu</a>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <a class="boton_th" href="##" onmousedown="sonido_Z.play()">z</a>
+        </th>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ZA.play()">za</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ZE.play()">ze</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ZI.play()">zi</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ZO.play()">zo</a>
+        </td>
+        <td>
+            <a class="boton" href="##" onmousedown="sonido_ZU.play()">zu</a>
+        </td>
+    </tr>
+</table>
+<script>
+    function mostrarPopup() {
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function cerrarPopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+<script>
+    function leerTexto() {
+        var texto = document.getElementById("texto_instrucciones").textContent;
+        if (texto.trim() === "") {
+            alert("Por favor, ingresa un texto válido.");
+            return;
+        }
+    }
+
+    var sonido_A_ = new Audio();
+    sonido_A_.src = '/audio/sonidos/sonido_A.mp3';
+    var sonido_E_ = new Audio();
+    sonido_E_.src = '/audio/sonidos/sonido_E.mp3';
+    var sonido_I_ = new Audio();
+    sonido_I_.src = '/audio/sonidos/sonido_I.mp3';
+    var sonido_O_ = new Audio();
+    sonido_O_.src = '/audio/sonidos/sonido_O.mp3';
+    var sonido_U_ = new Audio();
+    sonido_U_.src = '/audio/sonidos/sonido_U.mp3';
+
+    /*  B  */
+    var sonido_BA = new Audio();
+    sonido_BA.src = '/audio/sonidos/sonido_BA.mp3';
+    var sonido_BE = new Audio();
+    sonido_BE.src = '/audio/sonidos/sonido_BE.mp3';
+    var sonido_BI = new Audio();
+    sonido_BI.src = '/audio/sonidos/sonido_BI.mp3';
+    var sonido_BO = new Audio();
+    sonido_BO.src = '/audio/sonidos/sonido_BO.mp3';
+    var sonido_BU = new Audio();
+    sonido_BU.src = '/audio/sonidos/sonido_BU.mp3';
+
+    /*  C  */
+    var sonido_CA = new Audio();
+    sonido_CA.src = '/audio/sonidos/sonido_CA.mp3';
+    var sonido_CE = new Audio();
+    sonido_CE.src = '/audio/sonidos/sonido_CE.mp3';
+    var sonido_CI = new Audio();
+    sonido_CI.src = '/audio/sonidos/sonido_CI.mp3';
+    var sonido_CO = new Audio();
+    sonido_CO.src = '/audio/sonidos/sonido_CO.mp3';
+    var sonido_CU = new Audio();
+    sonido_CU.src = '/audio/sonidos/sonido_CU.mp3';
+
+    /*  CH  */
+    var sonido_CH = new Audio();
+    sonido_CH.src = '/audio/sonidos/sonido_CH.mp3';
+    var sonido_CHA = new Audio();
+    sonido_CHA.src = '/audio/sonidos/sonido_CHA.mp3';
+    var sonido_CHE = new Audio();
+    sonido_CHE.src = '/audio/sonidos/sonido_CHE.mp3';
+    var sonido_CHI = new Audio();
+    sonido_CHI.src = '/audio/sonidos/sonido_CHI.mp3';
+    var sonido_CHO = new Audio();
+    sonido_CHO.src = '/audio/sonidos/sonido_CHO.mp3';
+    var sonido_CHU = new Audio();
+    sonido_CHU.src = '/audio/sonidos/sonido_CHU.mp3';
+
+    /*  D  */
+    var sonido_DA = new Audio();
+    sonido_DA.src = '/audio/sonidos/sonido_DA.mp3';
+    var sonido_DE = new Audio();
+    sonido_DE.src = '/audio/sonidos/sonido_DE.mp3';
+    var sonido_DI = new Audio();
+    sonido_DI.src = '/audio/sonidos/sonido_DI.mp3';
+    var sonido_DO = new Audio();
+    sonido_DO.src = '/audio/sonidos/sonido_DO.mp3';
+    var sonido_DU = new Audio();
+    sonido_DU.src = '/audio/sonidos/sonido_DU.mp3';
+
+    /*  F  */
+    var sonido_F = new Audio();
+    sonido_F.src = '/audio/sonidos/sonido_F.mp3';
+    var sonido_FA = new Audio();
+    sonido_FA.src = '/audio/sonidos/sonido_FA.mp3';
+    var sonido_FE = new Audio();
+    sonido_FE.src = '/audio/sonidos/sonido_FE.mp3';
+    var sonido_FI = new Audio();
+    sonido_FI.src = '/audio/sonidos/sonido_FI.mp3';
+    var sonido_FO = new Audio();
+    sonido_FO.src = '/audio/sonidos/sonido_FO.mp3';
+    var sonido_FU = new Audio();
+    sonido_FU.src = '/audio/sonidos/sonido_FU.mp3';
+
+    /*  G  */
+    var sonido_GE = new Audio();
+    sonido_GE.src = '/audio/sonidos/sonido_GE.mp3';
+    var sonido_GI = new Audio();
+    sonido_GI.src = '/audio/sonidos/sonido_GI.mp3';
+    /*·····································*/
+    var sonido_GA = new Audio();
+    sonido_GA.src = '/audio/sonidos/sonido_GA.mp3';
+    var sonido_GUE = new Audio();
+    sonido_GUE.src = '/audio/sonidos/sonido_GUE.mp3';
+    var sonido_GUI = new Audio();
+    sonido_GUI.src = '/audio/sonidos/sonido_GUI.mp3';
+    var sonido_GO = new Audio();
+    sonido_GO.src = '/audio/sonidos/sonido_GO.mp3';
+    var sonido_GU = new Audio();
+    sonido_GU.src = '/audio/sonidos/sonido_GU.mp3';
+    /*·····································*/
+    var sonido_GÜE = new Audio();
+    sonido_GÜE.src = '/audio/sonidos/sonido_GÜE.mp3';
+    var sonido_GÜI = new Audio();
+    sonido_GÜI.src = '/audio/sonidos/sonido_GÜI.mp3';
+
+    /*  H  */
+    var sonido_H = new Audio();
+    sonido_H.src = '/audio/sonidos/sonido_H.mp3';
+    var sonido_HA = new Audio();
+    sonido_HA.src = '/audio/sonidos/sonido_HA.mp3';
+    var sonido_HE = new Audio();
+    sonido_HE.src = '/audio/sonidos/sonido_HE.mp3';
+    var sonido_HI = new Audio();
+    sonido_HI.src = '/audio/sonidos/sonido_HI.mp3';
+    var sonido_HO = new Audio();
+    sonido_HO.src = '/audio/sonidos/sonido_HO.mp3';
+    var sonido_HU = new Audio();
+    sonido_HU.src = '/audio/sonidos/sonido_HU.mp3';
+
+    /*  J  */
+    var sonido_J = new Audio();
+    sonido_J.src = '/audio/sonidos/sonido_J.mp3';
+    var sonido_JA = new Audio();
+    sonido_JA.src = '/audio/sonidos/sonido_JA.mp3';
+    var sonido_JE = new Audio();
+    sonido_JE.src = '/audio/sonidos/sonido_JE.mp3';
+    var sonido_JI = new Audio();
+    sonido_JI.src = '/audio/sonidos/sonido_JI.mp3';
+    var sonido_JO = new Audio();
+    sonido_JO.src = '/audio/sonidos/sonido_JO.mp3';
+    var sonido_JU = new Audio();
+    sonido_JU.src = '/audio/sonidos/sonido_JU.mp3';
+
+    /*  K  */
+    var sonido_KA = new Audio();
+    sonido_KA.src = '/audio/sonidos/sonido_KA.mp3';
+    var sonido_KE = new Audio();
+    sonido_KE.src = '/audio/sonidos/sonido_KE.mp3';
+    var sonido_KI = new Audio();
+    sonido_KI.src = '/audio/sonidos/sonido_KI.mp3';
+    var sonido_KO = new Audio();
+    sonido_KO.src = '/audio/sonidos/sonido_KO.mp3';
+    var sonido_KU = new Audio();
+    sonido_KU.src = '/audio/sonidos/sonido_KU.mp3';
+
+    /*  L  */
+    var sonido_L = new Audio();
+    sonido_L.src = '/audio/sonidos/sonido_L.mp3';
+    var sonido_LA = new Audio();
+    sonido_LA.src = '/audio/sonidos/sonido_LA.mp3';
+    var sonido_LE = new Audio();
+    sonido_LE.src = '/audio/sonidos/sonido_LE.mp3';
+    var sonido_LI = new Audio();
+    sonido_LI.src = '/audio/sonidos/sonido_LI.mp3';
+    var sonido_LO = new Audio();
+    sonido_LO.src = '/audio/sonidos/sonido_LO.mp3';
+    var sonido_LU = new Audio();
+    sonido_LU.src = '/audio/sonidos/sonido_LU.mp3';
+
+    /*  LL  */
+    var sonido_LL = new Audio();
+    sonido_LL.src = '/audio/sonidos/sonido_LL.mp3';
+    var sonido_LLA = new Audio();
+    sonido_LLA.src = '/audio/sonidos/sonido_LLA.mp3';
+    var sonido_LLE = new Audio();
+    sonido_LLE.src = '/audio/sonidos/sonido_LLE.mp3';
+    var sonido_LLI = new Audio();
+    sonido_LLI.src = '/audio/sonidos/sonido_LLI.mp3';
+    var sonido_LLO = new Audio();
+    sonido_LLO.src = '/audio/sonidos/sonido_LLO.mp3';
+    var sonido_LLU = new Audio();
+    sonido_LLU.src = '/audio/sonidos/sonido_LLU.mp3';
+
+    /*  M  */
+    var sonido_M = new Audio();
+    sonido_M.src = '/audio/sonidos/sonido_M.mp3';
+    var sonido_MA = new Audio();
+    sonido_MA.src = '/audio/sonidos/sonido_MA.mp3';
+    var sonido_ME = new Audio();
+    sonido_ME.src = '/audio/sonidos/sonido_ME.mp3';
+    var sonido_MI = new Audio();
+    sonido_MI.src = '/audio/sonidos/sonido_MI.mp3';
+    var sonido_MO = new Audio();
+    sonido_MO.src = '/audio/sonidos/sonido_MO.mp3';
+    var sonido_MU = new Audio();
+    sonido_MU.src = '/audio/sonidos/sonido_MU.mp3';
+
+    /*  N  */
+    var sonido_N = new Audio();
+    sonido_N.src = '/audio/sonidos/sonido_N.mp3';
+    var sonido_NA = new Audio();
+    sonido_NA.src = '/audio/sonidos/sonido_NA.mp3';
+    var sonido_NE = new Audio();
+    sonido_NE.src = '/audio/sonidos/sonido_NE.mp3';
+    var sonido_NI = new Audio();
+    sonido_NI.src = '/audio/sonidos/sonido_NI.mp3';
+    var sonido_NO = new Audio();
+    sonido_NO.src = '/audio/sonidos/sonido_NO.mp3';
+    var sonido_NU = new Audio();
+    sonido_NU.src = '/audio/sonidos/sonido_NU.mp3';
+
+    /*  Ñ  */
+    var sonido_Ñ = new Audio();
+    sonido_Ñ.src = '/audio/sonidos/sonido_Ñ.mp3';
+    var sonido_ÑA = new Audio();
+    sonido_ÑA.src = '/audio/sonidos/sonido_ÑA.mp3';
+    var sonido_ÑE = new Audio();
+    sonido_ÑE.src = '/audio/sonidos/sonido_ÑE.mp3';
+    var sonido_ÑI = new Audio();
+    sonido_ÑI.src = '/audio/sonidos/sonido_ÑI.mp3';
+    var sonido_ÑO = new Audio();
+    sonido_ÑO.src = '/audio/sonidos/sonido_ÑO.mp3';
+    var sonido_ÑU = new Audio();
+    sonido_ÑU.src = '/audio/sonidos/sonido_ÑU.mp3';
+
+    /*  P  */
+    var sonido_PA = new Audio();
+    sonido_PA.src = '/audio/sonidos/sonido_PA.mp3';
+    var sonido_PE = new Audio();
+    sonido_PE.src = '/audio/sonidos/sonido_PE.mp3';
+    var sonido_PI = new Audio();
+    sonido_PI.src = '/audio/sonidos/sonido_PI.mp3';
+    var sonido_PO = new Audio();
+    sonido_PO.src = '/audio/sonidos/sonido_PO.mp3';
+    var sonido_PU = new Audio();
+    sonido_PU.src = '/audio/sonidos/sonido_PU.mp3';
+
+    /*  Q  */
+    var sonido_Q = new Audio();
+    sonido_Q.src = '/audio/sonidos/sonido_Q.mp3';
+    var sonido_QUE = new Audio();
+    sonido_QUE.src = '/audio/sonidos/sonido_QUE.mp3';
+    var sonido_QUI = new Audio();
+    sonido_QUI.src = '/audio/sonidos/sonido_QUI.mp3';
+    /*······································*/
+    var sonido_QUA = new Audio();
+    sonido_QUA.src = '/audio/sonidos/sonido_QUA.mp3';
+    var sonido_QUO = new Audio();
+    sonido_QUO.src = '/audio/sonidos/sonido_QUO.mp3';
+
+    /*  R  */
+    var sonido_R = new Audio();
+    sonido_R.src = '/audio/sonidos/sonido_R.mp3';
+    var sonido_RA = new Audio();
+    sonido_RA.src = '/audio/sonidos/sonido_RA.mp3';
+    var sonido_RE = new Audio();
+    sonido_RE.src = '/audio/sonidos/sonido_RE.mp3';
+    var sonido_RI = new Audio();
+    sonido_RI.src = '/audio/sonidos/sonido_RI.mp3';
+    var sonido_RO = new Audio();
+    sonido_RO.src = '/audio/sonidos/sonido_RO.mp3';
+    var sonido_RU = new Audio();
+    sonido_RU.src = '/audio/sonidos/sonido_RU.mp3';
+    /*·····································*/
+    /*  _R  */
+    var sonido__R = new Audio();
+    sonido__R.src = '/audio/sonidos/sonido__R.mp3';
+    var sonido__RA = new Audio();
+    sonido__RA.src = '/audio/sonidos/sonido__RA.mp3';
+    var sonido__RE = new Audio();
+    sonido__RE.src = '/audio/sonidos/sonido__RE.mp3';
+    var sonido__RI = new Audio();
+    sonido__RI.src = '/audio/sonidos/sonido__RI.mp3';
+    var sonido__RO = new Audio();
+    sonido__RO.src = '/audio/sonidos/sonido__RO.mp3';
+    var sonido__RU = new Audio();
+    sonido__RU.src = '/audio/sonidos/sonido__RU.mp3';
+
+    /*  S  */
+    var sonido_S = new Audio();
+    sonido_S.src = '/audio/sonidos/sonido_S.mp3';
+    var sonido_SA = new Audio();
+    sonido_SA.src = '/audio/sonidos/sonido_SA.mp3';
+    var sonido_SE = new Audio();
+    sonido_SE.src = '/audio/sonidos/sonido_SE.mp3';
+    var sonido_SI = new Audio();
+    sonido_SI.src = '/audio/sonidos/sonido_SI.mp3';
+    var sonido_SO = new Audio();
+    sonido_SO.src = '/audio/sonidos/sonido_SO.mp3';
+    var sonido_SU = new Audio();
+    sonido_SU.src = '/audio/sonidos/sonido_SU.mp3';
+
+    /*  T  */
+    var sonido_T = new Audio();
+    sonido_T.src = '/audio/sonidos/sonido_T.mp3';
+    var sonido_TA = new Audio();
+    sonido_TA.src = '/audio/sonidos/sonido_TA.mp3';
+    var sonido_TE = new Audio();
+    sonido_TE.src = '/audio/sonidos/sonido_TE.mp3';
+    var sonido_TI = new Audio();
+    sonido_TI.src = '/audio/sonidos/sonido_TI.mp3';
+    var sonido_TO = new Audio();
+    sonido_TO.src = '/audio/sonidos/sonido_TO.mp3';
+    var sonido_TU = new Audio();
+    sonido_TU.src = '/audio/sonidos/sonido_TU.mp3';
+
+    /*  V  */
+    var sonido_V = new Audio();
+    sonido_V.src = '/audio/sonidos/sonido_V.mp3';
+    var sonido_VA = new Audio();
+    sonido_VA.src = '/audio/sonidos/sonido_VA.mp3';
+    var sonido_VE = new Audio();
+    sonido_VE.src = '/audio/sonidos/sonido_VE.mp3';
+    var sonido_VI = new Audio();
+    sonido_VI.src = '/audio/sonidos/sonido_VI.mp3';
+    var sonido_VO = new Audio();
+    sonido_VO.src = '/audio/sonidos/sonido_VO.mp3';
+    var sonido_VU = new Audio();
+    sonido_VU.src = '/audio/sonidos/sonido_VU.mp3';
+
+    /*  W  */
+    var sonido_W = new Audio();
+    sonido_W.src = '/audio/sonidos/sonido_W.mp3';
+    var sonido_WA = new Audio();
+    sonido_WA.src = '/audio/sonidos/sonido_WA.mp3';
+    var sonido_WE = new Audio();
+    sonido_WE.src = '/audio/sonidos/sonido_WE.mp3';
+    var sonido_WI = new Audio();
+    sonido_WI.src = '/audio/sonidos/sonido_WI.mp3';
+    var sonido_WO = new Audio();
+    sonido_WO.src = '/audio/sonidos/sonido_WO.mp3';
+    var sonido_WU = new Audio();
+    sonido_WU.src = '/audio/sonidos/sonido_WU.mp3';
+
+    /*  X  */
+    var sonido_X = new Audio();
+    sonido_X.src = '/audio/sonidos/sonido_X.mp3';
+    var sonido_XA = new Audio();
+    sonido_XA.src = '/audio/sonidos/sonido_XA.mp3';
+    var sonido_XE = new Audio();
+    sonido_XE.src = '/audio/sonidos/sonido_XE.mp3';
+    var sonido_XI = new Audio();
+    sonido_XI.src = '/audio/sonidos/sonido_XI.mp3';
+    var sonido_XO = new Audio();
+    sonido_XO.src = '/audio/sonidos/sonido_XO.mp3';
+    var sonido_XU = new Audio();
+    sonido_XU.src = '/audio/sonidos/sonido_XU.mp3';
+
+    /*  Y  */
+    var sonido_Y = new Audio();
+    sonido_Y.src = '/audio/sonidos/sonido_Y.mp3';
+    var sonido_YA = new Audio();
+    sonido_YA.src = '/audio/sonidos/sonido_YA.mp3';
+    var sonido_YE = new Audio();
+    sonido_YE.src = '/audio/sonidos/sonido_YE.mp3';
+    var sonido_YI = new Audio();
+    sonido_YI.src = '/audio/sonidos/sonido_YI.mp3';
+    var sonido_YO = new Audio();
+    sonido_YO.src = '/audio/sonidos/sonido_YO.mp3';
+    var sonido_YU = new Audio();
+    sonido_YU.src = '/audio/sonidos/sonido_YU.mp3';
+
+    /*  Z  */
+    var sonido_Z = new Audio();
+    sonido_Z.src = '/audio/sonidos/sonido_Z.mp3';
+    var sonido_ZA = new Audio();
+    sonido_ZA.src = '/audio/sonidos/sonido_ZA.mp3';
+    var sonido_ZE = new Audio();
+    sonido_ZE.src = '/audio/sonidos/sonido_ZE.mp3';
+    var sonido_ZI = new Audio();
+    sonido_ZI.src = '/audio/sonidos/sonido_ZI.mp3';
+    var sonido_ZO = new Audio();
+    sonido_ZO.src = '/audio/sonidos/sonido_ZO.mp3';
+    var sonido_ZU = new Audio();
+    sonido_ZU.src = '/audio/sonidos/sonido_ZU.mp3';
+</script>

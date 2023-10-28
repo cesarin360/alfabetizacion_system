@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div class="cssanimation fadeInTop">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ejercicios Etapa 2</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+    <br>
+    {{#if paramsNextExercise}}
+     <div>
+    {{else}}
+    <div class="cssanimation fadeInBottom">
+    {{/if}}
+        <div class="shop-default shop-cards shop-tech">
+            <div class="row">
+                {{#each colorsHex1}}
+                {{#ifDif @index 0}}
+                <div class="col-md-4">
+                    <div class="block product no-border z-depth-2-top z-depth-2--hover">
+                        <div class="block-image" id="ejercicio-{{@index}}">
+                            <a href="/modulos/aprendizaje/etapa-2/ejercicio-{{@index}}?num={{@index}}">
+                                <svg class="bd-placeholder-img img-fluid rounded-start" width="100%" height="350"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Ejercicio #{{@index}}</title>
+                                    <rect width="100%" height="100%" fill="{{this}}"></rect><text x="40%" y="50%"
+                                        fill="#dee2e6" dy=".3em" font-size="100">{{@index}}</text>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="block-body text-center">
+                            <h3 class="heading heading-5 strong-600 text-capitalize">
+                                <a href="#">
+                                    Ejercicio #{{@index}}
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                {{/ifDif}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <script>
+        var elemento = document.getElementById("{{paramsNextExercise}}");
+        if (elemento) {
+            elemento.scrollIntoView({ behavior: "smooth" });
+            elemento.className += " intermitente";
+        }
+    </script>
